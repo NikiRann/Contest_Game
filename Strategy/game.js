@@ -95,20 +95,20 @@ function update()
 {
 	if(mouseX < 0 && mouseX > -50 && windowX > 0)
 	{
-		windowX -= 1;
+		windowX -= 3;
 	}
 	if(mouseX > canvas.width && mouseX < canvas.width + 50 && windowX < mapSizeX * tileSize.x - canvas.width / tileSize.x)
 	{
-		windowX += 1;
+		windowX += 3;
 	}
 	if(mouseY < 0 && mouseY > -50)
 	{
 
-		windowY -= 1;
+		windowY -= 3;
 	}
 	if(mouseY > canvas.height && mouseY < canvas.height + 50 && windowY < mapSizeY * tileSize.y)
 	{
-		windowY += 1;
+		windowY += 3;
 	}
 	setTimeout(update, 10);
 }
