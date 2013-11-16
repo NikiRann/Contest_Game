@@ -6,6 +6,21 @@ var requestAnimationFrame = window.requestAnimationFrame ||
 var canvas = document.getElementById("canvas-id");
 canvas.width = 800;
 canvas.height = 600;
+function map(){
+	this.array = create2darray();
+	function create2darray(nY , nX){
+		var array = [];
+		for(var i = 0;i < nY;i ++)
+		{
+			array[i] = [];
+			for(var o = 0;o < nX;o ++)
+			{
+				array[i][o] = new tile();
+			}	
+		}
+		return array;
+	}
+}
 var context = canvas.getContext("2d");
 window.addEventListener("keydown", function (args) {
 }, false);
