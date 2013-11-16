@@ -6,22 +6,34 @@ var requestAnimationFrame = window.requestAnimationFrame ||
 var canvas = document.getElementById("canvas-id");
 canvas.width = 800;
 canvas.height = 600;
-function map(){
-	this.array = create2darray();
-	function create2darray(nY , nX){
+var context = canvas.getContext("2d");
+function Vector(_x,_y){
+	this.x = _x;
+	this.y = _y;
+}
+function Game(){
+	this.MapSize = new Vector(50,50);
+	this.Map = new map(this.MapSize);
+	this.Units = new array();
+}
+function map(size){
+	this.array = create2darray(size);
+	this.create2darray = function(n){
 		var array = [];
-		for(var i = 0;i < nY;i ++)
+		for(var i = 0;i < n.y;i ++)
 		{
-			array[i] = [];
-			for(var o = 0;o < nX;o ++)
+			this.array[i] = [];
+			for(var o = 0;o < n.x;o ++)
 			{
-				array[i][o] = new tile();
+				this.array[i][o] = new Tile();
 			}	
 		}
 		return array;
 	}
 }
-var context = canvas.getContext("2d");
+function Tile(_biome){
+	this.biome = _biome;
+}
 window.addEventListener("keydown", function (args) {
 }, false);
 window.addEventListener("keyup", function (args) {
