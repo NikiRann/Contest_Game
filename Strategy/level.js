@@ -29,9 +29,9 @@ function Map(_size,_tilesize,_cameraPos){
 	}	
 	this.array = this.create2darray(this.size);
 	this.generate = function(){
-		var numLand = Math.floor(Math.random() * 30) + 14;
+		var numLand = Math.floor(Math.random() * 25) + 10;
 		for (var i = 0;i < numLand;i ++){
-			var biomeSize = Math.floor(Math.random() * 700) + 200;
+			var biomeSize = Math.floor(Math.random() * 500) + 100;
 			var coordinates = {x : Math.floor(Math.random() * this.size.x),y : Math.floor(Math.random() * this.size.y)};
 			for(var o = 0;o < biomeSize;o ++)
 			{
@@ -75,11 +75,11 @@ function Map(_size,_tilesize,_cameraPos){
 			for(var x = 0;x < this.size.x;x ++){
 				if(this.array[x][y].biome === "water"){
 					ctx.fillStyle = "blue";
-					ctx.fillRect(x * this.array[x][y].size.x + this.camera.x,y * this.array[x][y].size.y + this.camera.y,this.array[x][y].size.x,this.array[x][y].size.y);
+					ctx.fillRect(x * this.array[x][y].size.x - this.camera.x,y * this.array[x][y].size.y - this.camera.y,this.array[x][y].size.x,this.array[x][y].size.y);
 				}
 				if(this.array[x][y].biome === "plains"){
 					ctx.fillStyle = "green";
-					ctx.fillRect(x * this.array[x][y].size.x + this.camera.x,y * this.array[x][y].size.y + this.camera.y,this.array[x][y].size.x,this.array[x][y].size.y);
+					ctx.fillRect(x * this.array[x][y].size.x - this.camera.x,y * this.array[x][y].size.y - this.camera.y,this.array[x][y].size.x,this.array[x][y].size.y);
 				}
 			}	
 		}

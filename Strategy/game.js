@@ -75,8 +75,8 @@ function Vector(_x,_y){
 	}
 }
 function Game(){
-	this.mapSize = new Vector(200,150);
-	this.tileSize = new Vector(500,500);
+	this.mapSize = new Vector(100,75);
+	this.tileSize = new Vector(50,50);
 	this.cameraPos = new Vector(0,0);
 	this.map = new Map(this.mapSize,this.tileSize,this.cameraPos);
 	this.render = function(){
@@ -84,6 +84,21 @@ function Game(){
 	}
 
 }
+window.addEventListener("keydown", function (args) {
+	if(args.keyCode == 38){
+		game.map.camera.y -= 5;
+	}
+	if(args.keyCode == 40){
+		game.map.camera.y += 5;
+	}
+	if(args.keyCode == 39){
+		game.map.camera.x += 5;
+	}
+	if(args.keyCode == 37){
+		game.map.camera.x -= 5;
+	}
+	console.log(args.keyCode);
+}, false);
 function update() {
 >>>>>>> 1f23bbfc45e1e5c37210635d19972d7eb00073bd
 	setTimeout(update, 10);
