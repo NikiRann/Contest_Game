@@ -6,7 +6,7 @@ var requestAnimationFrame = window.requestAnimationFrame ||
 var canvas = document.getElementById("canvas-id");
 canvas.width = 800;
 canvas.height = 600;
-var context = canvas.getContext("2d");
+var ctx = canvas.getContext("2d");
 function Vector(_x,_y){
 	this.x=_x;
 	this.y=_y;
@@ -33,8 +33,12 @@ function Unit(_location,_movmentPoints,_damage,_health,_type){ //worker,dameger,
 		game.map.array[location.x][location.y].Buildings.push(new Building(location,health,buildingtype))
 	}
 	this.move = function(direction){
-		game.map.array[this.location.x + direction.x][this.location.y + direction.y].Unit = this;
-		console.log(game.map.array[this.location.x + direction.x][this.location.y + direction.y].Unit);
 		game.map.array[this.location.x][this.location.y].Unit = undefined;
+		game.map.array[this.location.x + direction.x][this.location.y + direction.y].Unit = this;
+		game.map.array[this.location.x + direction.x][this.location.y + direction.y].Unit.location.add(direction);
+	}
+	this.render = function(){
+		ctx.fillStyle = "purple";
+		ctx.fillRect(this.location.x * game.tileSize.x,this.location.y * game.tileSize.y,game.tileSize.x,game.tileSize.y);
 	}
 }

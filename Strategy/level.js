@@ -81,6 +81,10 @@ function Map(_size,_tilesize,_cameraPos){
 					ctx.fillStyle = "green";
 					ctx.fillRect(x * this.array[x][y].size.x - this.camera.x,y * this.array[x][y].size.y - this.camera.y,this.array[x][y].size.x,this.array[x][y].size.y);
 				}
+				if(this.array[x][y].Unit != undefined){
+					this.array[x][y].Unit.render();
+					console.log("toq zad nas e guz");
+				}
 			}	
 		}
 	}
