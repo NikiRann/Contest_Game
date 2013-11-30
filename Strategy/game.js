@@ -29,6 +29,13 @@ function Game(){
 	}
 
 }
+
+function MoveSelected(){
+	if(game.map.array[game.selectedTile.x][game.selectedTile.y].Unit != undefined){
+		game.map.array[game.selectedTile.x][game.selectedTile.y].Unit.move(new Vector(1, 0))
+	}
+}
+
 window.addEventListener("keydown", function (args) {
 	if(args.keyCode == 38){
 		game.map.camera.y -= 5;
@@ -48,8 +55,10 @@ window.addEventListener("mousemove", function (args) {
 	game.mouse.y = args.pageY - canvas.offsetTop;
 }, false);
 window.addEventListener("mousedown", function (args) {
-	game.selectedTile.x = Math.floor(game.mouse.x / game.tileSize.x);
-	game.selectedTile.y = Math.floor(game.mouse.y / game.tileSize.y);
+	if(game.mouse.x < canvas.width && game.mouse.y < canvas.height){	
+		game.selectedTile.x = Math.floor(game.mouse.x / game.tileSize.x);
+		game.selectedTile.y = Math.floor(game.mouse.y / game.tileSize.y);
+	}
 }, false);
 function update() {
 	setTimeout(update, 10);
