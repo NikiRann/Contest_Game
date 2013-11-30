@@ -88,6 +88,6 @@ function Map(_size,_tilesize,_cameraPos){
 function Tile(_biome,_size){
 	this.biome = _biome;
 	this.size = _size;
-	this.Buildings = [];
-	this.Untits = [];
+	this.Building;
+	this.Unit;
 }

@@ -17,38 +17,24 @@ function Vector(_x,_y){
 	}
 }
 
-var Constants = {
-	mapSize: new Vector(800,600);
+function Building(_location,_health,_type){ //worker,dameger,building,
+	this.location = _location;
+	this.health = _health;
+	this.type = _type;
 }
 
-function damager(_location,_size,_movmentPoints,_damage,_health){
+function Unit(_location,_movmentPoints,_damage,_health,_type){ //worker,dameger,building,
 	this.location = _location;
-	this.size = _size;
 	this.movmentPoints = _movmentPoints;
 	this.damage = _damage;
 	this.health = _health;
-
-	this.strike = function strike(unit){
-		unit.health -= this.damage;
+	this.type = _type;
+	this.build = function(location,health,buildingtype){
+		game.map.array[location.x][location.y].Buildings.push(new Building(location,health,buildingtype))
+	}
+	this.move = function(direction){
+		game.map.array[this.location.x + direction.x][this.location.y + direction.y].Unit = this;
+		console.log(game.map.array[this.location.x + direction.x][this.location.y + direction.y].Unit);
+		game.map.array[this.location.x][this.location.y].Unit = undefined;
 	}
 }
-
-function worker(_location,_size,_movmentPoints,_damage,_health){
-	this.location = _location;
-	this.size = _size;
-	this.movmentPoints = _movmentPoints;
-	this.damage = _damage;
-	this.health = _health;
-
-	this.build = function build(type,location,size){
-		// new build;
-	}
-}
-
-/*function Unit(_location,_size,_movmentPoints,_damage,_health){
-	this.location = _location;
-	this.size = _size;
-	this.movmentPoints = _movmentPoints;
-	this.damage = _damage;
-	this.health = _health;
-}*/
