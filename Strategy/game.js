@@ -40,7 +40,6 @@ window.addEventListener("keydown", function (args) {
 	if(args.keyCode == 37){
 		game.map.camera.x -= 5;
 	}
-	console.log(args.keyCode);
 }, false);
 
 function update() {
