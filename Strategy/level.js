@@ -85,6 +85,10 @@ function Map(_size,_tilesize,_cameraPos){
 					this.array[x][y].Unit.render();
 					console.log("toq zad nas e guz");
 				}
+				if(x === game.selectedTile.x && y === game.selectedTile.y){
+					ctx.strokeStyle = "yellow";
+					ctx.strokeRect(x * this.array[x][y].size.x - this.camera.x,y * this.array[x][y].size.y - this.camera.y,this.array[x][y].size.x,this.array[x][y].size.y);
+				}
 			}	
 		}
 	}

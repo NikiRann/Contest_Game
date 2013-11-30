@@ -21,6 +21,8 @@ function Game(){
 	this.mapSize = new Vector(100,75);
 	this.tileSize = new Vector(50,50);
 	this.cameraPos = new Vector(0,0);
+	this.mouse = new Vector(0,0);
+	this.selectedTile = new Vector(0,0);
 	this.map = new Map(this.mapSize,this.tileSize,this.cameraPos);
 	this.render = function(){
 		this.map.render();
@@ -41,7 +43,14 @@ window.addEventListener("keydown", function (args) {
 		game.map.camera.x -= 5;
 	}
 }, false);
-
+window.addEventListener("mousemove", function (args) {
+	game.mouse.x = args.pageX - canvas.offsetLeft;
+	game.mouse.y = args.pageY - canvas.offsetTop;
+}, false);
+window.addEventListener("mousedown", function (args) {
+	game.selectedTile.x = Math.floor(game.mouse.x / game.tileSize.x);
+	game.selectedTile.y = Math.floor(game.mouse.y / game.tileSize.y);
+}, false);
 function update() {
 	setTimeout(update, 10);
 }
