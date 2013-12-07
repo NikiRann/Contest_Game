@@ -83,7 +83,6 @@ function Map(_size,_tilesize,_cameraPos){
 				}
 				if(this.array[x][y].Unit != undefined){
 					this.array[x][y].Unit.render();
-					console.log("toq zad nas e guz");
 				}
 				if(x === game.selectedTile.x && y === game.selectedTile.y){
 					ctx.strokeStyle = "yellow";

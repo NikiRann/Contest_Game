@@ -56,8 +56,8 @@ window.addEventListener("mousemove", function (args) {
 }, false);
 window.addEventListener("mousedown", function (args) {
 	if(game.mouse.x < canvas.width && game.mouse.y < canvas.height){	
-		game.selectedTile.x = Math.floor(game.mouse.x / game.tileSize.x);
-		game.selectedTile.y = Math.floor(game.mouse.y / game.tileSize.y);
+		game.selectedTile.x = Math.floor((game.mouse.x + game.cameraPos.x) / game.tileSize.x);
+		game.selectedTile.y = Math.floor((game.mouse.y + game.cameraPos.y) / game.tileSize.y);
 	}
 }, false);
 function update() {
